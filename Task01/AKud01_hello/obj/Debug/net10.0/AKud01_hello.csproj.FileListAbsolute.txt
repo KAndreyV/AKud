@@ -1,0 +1,14 @@
+E:\Microsoft VisialStudio\Mephi\AKud01_hello\AKud01_hello\bin\Debug\net10.0\AKud01_hello.exe
+E:\Microsoft VisialStudio\Mephi\AKud01_hello\AKud01_hello\bin\Debug\net10.0\AKud01_hello.deps.json
+E:\Microsoft VisialStudio\Mephi\AKud01_hello\AKud01_hello\bin\Debug\net10.0\AKud01_hello.runtimeconfig.json
+E:\Microsoft VisialStudio\Mephi\AKud01_hello\AKud01_hello\bin\Debug\net10.0\AKud01_hello.dll
+E:\Microsoft VisialStudio\Mephi\AKud01_hello\AKud01_hello\bin\Debug\net10.0\AKud01_hello.pdb
+E:\Microsoft VisialStudio\Mephi\AKud01_hello\AKud01_hello\obj\Debug\net10.0\AKud01_hello.GeneratedMSBuildEditorConfig.editorconfig
+E:\Microsoft VisialStudio\Mephi\AKud01_hello\AKud01_hello\obj\Debug\net10.0\AKud01_hello.AssemblyInfoInputs.cache
+E:\Microsoft VisialStudio\Mephi\AKud01_hello\AKud01_hello\obj\Debug\net10.0\AKud01_hello.AssemblyInfo.cs
+E:\Microsoft VisialStudio\Mephi\AKud01_hello\AKud01_hello\obj\Debug\net10.0\AKud01_hello.csproj.CoreCompileInputs.cache
+E:\Microsoft VisialStudio\Mephi\AKud01_hello\AKud01_hello\obj\Debug\net10.0\AKud01_hello.dll
+E:\Microsoft VisialStudio\Mephi\AKud01_hello\AKud01_hello\obj\Debug\net10.0\refint\AKud01_hello.dll
+E:\Microsoft VisialStudio\Mephi\AKud01_hello\AKud01_hello\obj\Debug\net10.0\AKud01_hello.pdb
+E:\Microsoft VisialStudio\Mephi\AKud01_hello\AKud01_hello\obj\Debug\net10.0\AKud01_hello.genruntimeconfig.cache
+E:\Microsoft VisialStudio\Mephi\AKud01_hello\AKud01_hello\obj\Debug\net10.0\ref\AKud01_hello.dll

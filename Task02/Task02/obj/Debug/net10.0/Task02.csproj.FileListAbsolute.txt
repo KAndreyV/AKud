@@ -1,0 +1,14 @@
+E:\Microsoft VisialStudio\Mephi\Task02\Task02\bin\Debug\net10.0\Task02.exe
+E:\Microsoft VisialStudio\Mephi\Task02\Task02\bin\Debug\net10.0\Task02.deps.json
+E:\Microsoft VisialStudio\Mephi\Task02\Task02\bin\Debug\net10.0\Task02.runtimeconfig.json
+E:\Microsoft VisialStudio\Mephi\Task02\Task02\bin\Debug\net10.0\Task02.dll
+E:\Microsoft VisialStudio\Mephi\Task02\Task02\bin\Debug\net10.0\Task02.pdb
+E:\Microsoft VisialStudio\Mephi\Task02\Task02\obj\Debug\net10.0\Task02.GeneratedMSBuildEditorConfig.editorconfig
+E:\Microsoft VisialStudio\Mephi\Task02\Task02\obj\Debug\net10.0\Task02.AssemblyInfoInputs.cache
+E:\Microsoft VisialStudio\Mephi\Task02\Task02\obj\Debug\net10.0\Task02.AssemblyInfo.cs
+E:\Microsoft VisialStudio\Mephi\Task02\Task02\obj\Debug\net10.0\Task02.csproj.CoreCompileInputs.cache
+E:\Microsoft VisialStudio\Mephi\Task02\Task02\obj\Debug\net10.0\Task02.dll
+E:\Microsoft VisialStudio\Mephi\Task02\Task02\obj\Debug\net10.0\refint\Task02.dll
+E:\Microsoft VisialStudio\Mephi\Task02\Task02\obj\Debug\net10.0\Task02.pdb
+E:\Microsoft VisialStudio\Mephi\Task02\Task02\obj\Debug\net10.0\Task02.genruntimeconfig.cache
+E:\Microsoft VisialStudio\Mephi\Task02\Task02\obj\Debug\net10.0\ref\Task02.dll

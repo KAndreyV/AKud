@@ -1,0 +1,14 @@
+C:\Users\Admin\Desktop\Mephi02\YA03_files\YA03_files\bin\Debug\net10.0\YA03_files.exe
+C:\Users\Admin\Desktop\Mephi02\YA03_files\YA03_files\bin\Debug\net10.0\YA03_files.deps.json
+C:\Users\Admin\Desktop\Mephi02\YA03_files\YA03_files\bin\Debug\net10.0\YA03_files.runtimeconfig.json
+C:\Users\Admin\Desktop\Mephi02\YA03_files\YA03_files\bin\Debug\net10.0\YA03_files.dll
+C:\Users\Admin\Desktop\Mephi02\YA03_files\YA03_files\bin\Debug\net10.0\YA03_files.pdb
+C:\Users\Admin\Desktop\Mephi02\YA03_files\YA03_files\obj\Debug\net10.0\YA03_files.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\Mephi02\YA03_files\YA03_files\obj\Debug\net10.0\YA03_files.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\Mephi02\YA03_files\YA03_files\obj\Debug\net10.0\YA03_files.AssemblyInfo.cs
+C:\Users\Admin\Desktop\Mephi02\YA03_files\YA03_files\obj\Debug\net10.0\YA03_files.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\Mephi02\YA03_files\YA03_files\obj\Debug\net10.0\YA03_files.dll
+C:\Users\Admin\Desktop\Mephi02\YA03_files\YA03_files\obj\Debug\net10.0\refint\YA03_files.dll
+C:\Users\Admin\Desktop\Mephi02\YA03_files\YA03_files\obj\Debug\net10.0\YA03_files.pdb
+C:\Users\Admin\Desktop\Mephi02\YA03_files\YA03_files\obj\Debug\net10.0\YA03_files.genruntimeconfig.cache
+C:\Users\Admin\Desktop\Mephi02\YA03_files\YA03_files\obj\Debug\net10.0\ref\YA03_files.dll

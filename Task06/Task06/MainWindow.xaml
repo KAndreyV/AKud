@@ -1,0 +1,19 @@
+﻿<Window x:Class="DoubleNumberApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Удвоение числа" Height="180" Width="300">
+    <Grid Margin="20">
+        <StackPanel VerticalAlignment="Center">
+            <TextBox x:Name="NumberTextBox"
+                     Height="30"
+                     Margin="0,0,0,15"
+                     FontSize="16"/>
+
+            <Button x:Name="DoubleButton"
+                    Content="Удвоить"
+                    Height="35"
+                    FontSize="16"
+                    Click="DoubleButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

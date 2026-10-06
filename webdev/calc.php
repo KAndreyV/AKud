@@ -49,15 +49,27 @@
       }
     </style>
     <script>
-      function calculate(operation) {
+      function calculateSum() {
         let x = parseFloat(document.getElementById("x").value);
         let y = parseFloat(document.getElementById("y").value);
-
-        fetch(`api/operations_service.php?operation=${operation}&x=${x}&y=${y}`)
-          .then(response => response.text())
-          .then(result => {
-            document.getElementById("z").value = result;
-          });
+        let z = x + y;
+        document.getElementById("z").value = z;
+      }
+    </script>
+    <script>
+      function calculateMin() {
+        let x = parseFloat(document.getElementById("x").value);
+        let y = parseFloat(document.getElementById("y").value);
+        let z = x - y;
+        document.getElementById("z").value = z;
+      }
+    </script>
+    <script>
+      function calculateMulti() {
+        let x = parseFloat(document.getElementById("x").value);
+        let y = parseFloat(document.getElementById("y").value);
+        let z = x * y;
+        document.getElementById("z").value = z;
       }
     </script>
   </head>
@@ -72,9 +84,9 @@
       <label for="y">Y</label>
       <input class="number" id="y" />
     </div>
-    <button onclick="calculate('plus')">+</button>
-    <button onclick="calculate('')">-</button>
-    <button onclick="calculate('multiply')">Умножить</button>
+    <button onclick="calculateSum()">+</button>
+    <button onclick="calculateMin()">-</button>
+    <button onclick="calculateMulti()">Умножить</button>
     <div class="field">
       <label for="z">Z</label>
       <input id="z" />

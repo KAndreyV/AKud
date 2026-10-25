@@ -6,6 +6,8 @@
         exit;
     }
 
+    $allowed = ['operation_date', 'operation', 'x', 'y', 'z'];
+
     $date_from = '2000-01-01'; // очень давно
     $date_to = '2100-01-01'; // очень нескоро
 
@@ -17,18 +19,35 @@
         $date_to = $_GET['date_to'];
     }
 
-    if(!empty($_GET['z_min'])) {
-        $z_min = $_GET['z_min'];
+    $sort = 'operation_date';
+    $dir = 'DESC';
+
+    if(isset($_GET['sort']) && in_array($_GET['sort'], $allowed)) {
+        $sort = $_GET['sort'];
     }
 
-    if(!empty($_GET['z_max'])) {
-        $z_max = $_GET['z_max'];
+    if(isset($_GET['dir']) && $_GET['dir'] == 'ASC') {
+        $dir = $_GET['dir'];
     }
 
     $host = 'localhost';
     $username = 'root';
     $password_db = '';
     $db = 'calc';
+
+    $limit = 5;
+
+    $page = 1;
+
+    if(!empty($_GET['page'])) {
+        $page = (int) $_GET['page'];
+    }
+
+    if ($page < 1) {
+        $page = 1;
+    }
+
+    $offset = ($page - 1) * $limit;
 
     $mysqli = new mysqli($host, $username, $password_db, $db);
 
@@ -39,26 +58,10 @@
 
     $login = $_SESSION['login'];
 
+    $query = "SELECT operation_date, x, y, z, operation FROM operation WHERE login = ? AND DATE(operation_date) BETWEEN ? AND ? ORDER BY $sort $dir LIMIT ? OFFSET ?";
 
-    $query = "SELECT operation_date, x, y, z, operation FROM operation WHERE login = ? AND DATE(operation_date) BETWEEN ? AND ?";
-    $types = 'sss';
-    $params = array($login, $date_from, $date_to);
-
-
-    if(isset($z_max)) {
-        $query .= " AND z <= ?";
-        $types .= 'd';
-        $params[] = (float) $z_max;
-    }
-
-    if(isset($z_min)) {
-        $query .= " AND z >= ?";
-        $types .= 'd';
-        $params[] = (float) $z_min;
-    }
- 
     $result = $mysqli->prepare($query);
-    $result->bind_param($types, ...$params);
+    $result->bind_param('sssdd', $login, $date_from, $date_to, $limit, $offset);
 
     $result->execute();
 

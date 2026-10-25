@@ -27,44 +27,145 @@
         .filters {
             margin-block: 10px;
         }
+
+        th {
+            cursor: pointer;
+        }
+
+        th:hover {
+            background: #689cfc;
+        }
+
+        th.asc, th.desc {
+            background: #fcf268;
+        }
+
+        th.asc::after {
+            content: ' ↑';
+        }
+
+        th.desc::after {
+            content: ' ↓';
+        }
+
     </style>
     <script>
+        let sort = 'operation_date';
+        let dir = 'DESC';
+
+        let page = 1;
+
+        function sortBy(column) {
+            if (sort === column) {
+                if(dir == 'ASC') {
+                    dir = 'DESC';
+                }
+                else {
+                    dir = 'ASC';
+                }
+            }
+            else {
+                sort = column;
+                dir = 'ASC';
+            }
+            showSort();
+            loadData();
+        }
+
+        function showSort() {
+            const headers = document.querySelectorAll('th');
+            console.log(headers);
+            headers.forEach((th) => {
+                th.classList = [];
+            });
+
+            const curHeader = document.getElementById("header_" + sort);
+            if(dir === 'ASC') {
+                curHeader.className = 'asc'
+            }
+            else {
+                curHeader.className = 'desc'
+            }
+
+        }
+
+        function prevPage() {
+            page = page - 1;
+            loadData();
+        }
+
+        function nextPage() {
+            page = page + 1;
+            loadData()
+        }
+
+        function showPages() {
+            document.getElementById('page-info').textContent = `Страница ${page}`;
+            document.getElementById('prev').disabled = (page === 1);
+            document.getElementById('next').disabled = true;
+
+            const currentPage = page;
+            const params = new URLSearchParams({
+                date_from: document.getElementById('date_from').value,
+                date_to: document.getElementById('date_to').value,
+                sort: sort,
+                dir: dir,
+                page: page + 1,
+            })
+
+            fetch('api/invoice_service.php?' + params.toString())
+            .then((response) => {
+                if (response.status === 200) {
+                    return response.json();
+                }
+                else {
+                    throw new Error(`Ошибка ${response.status}: ${response.statusText}`);
+                }
+            })
+            .then((calcs) => {
+                if (page === currentPage) {
+                    document.getElementById('next').disabled = (calcs.length === 0);
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }
+        
+
         function loadData() {
-            // Ожидание ответа
             document.getElementById("calcs").innerHTML = '<tr><td colspan="5">Загрузка...</td></tr>';
 
             const date_from = document.getElementById('date_from').value;
             const date_to = document.getElementById('date_to').value;
-            const z_max = document.getElementById('z_max').value;
-            const z_min = document.getElementById('z_min').value;
 
             const params = new URLSearchParams({
                 date_from: date_from,
                 date_to: date_to,
-                z_max: z_max,
-                z_min: z_min
+                sort: sort,
+                dir: dir,
+                page: page,
             })
 
-            // Запрашиваем данные
-
-            const xhr = new XMLHttpRequest();
-
-            xhr.open('GET', 'api/invoice_service.php?' + params.toString(), true);
-            xhr.onload = function () {
-                if (xhr.status === 401) {
+            fetch('api/invoice_service.php?' + params.toString())
+            .then((response) => {
+                if (response.status === 401) {
                     window.location.href = "login.html";
                 }
-                
-                else if (xhr.status === 200) {
-                    const calcs = JSON.parse(xhr.responseText);
-                    showCalcs(calcs);
+                else if (response.status === 200) {
+                    return response.json();
                 }
                 else {
-                    alert(`Ошибка ${xhr.status}: ${xhr.responseText}`)
+                    throw new Error(`Ошибка ${response.status}: ${response.statusText}`);
                 }
-            }
+            })
+            .then((calcs) => {
+                showCalcs(calcs);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
 
-            xhr.send();
         }
 
         function showCalcs(calcs){
@@ -81,18 +182,51 @@
                 </tr>`).join('');
                 document.getElementById("calcs").innerHTML = html;
             }
+
+            showPages();
         }
 
         function resetFilter() {
             document.getElementById('date_from').value = '';
             document.getElementById('date_to').value = '';
-            document.getElementById('z_min').value = '';
-            document.getElementById('z_max').value = '';
-
 
             loadData();
         }
         window.onload = loadData;
+
+        // function loadData() {
+        //     // Ожидание ответа
+        //     document.getElementById("calcs").innerHTML = '<tr><td colspan="5">Загрузка...</td></tr>';
+
+        //     const date_from = document.getElementById('date_from').value;
+        //     const date_to = document.getElementById('date_to').value;
+
+        //     const params = new URLSearchParams({
+        //         date_from: date_from,
+        //         date_to: date_to
+        //     })
+
+        //     // Запрашиваем данные
+
+        //     const xhr = new XMLHttpRequest();
+
+        //     xhr.open('GET', 'api/invoice_service.php?' + params.toString(), true);
+        //     xhr.onload = function () {
+        //         if (xhr.status === 401) {
+        //             window.location.href = "login.html";
+        //         }
+                
+        //         else if (xhr.status === 200) {
+        //             const calcs = JSON.parse(xhr.responseText);
+        //             showCalcs(calcs);
+        //         }
+        //         else {
+        //             alert(`Ошибка ${xhr.status}: ${xhr.responseText}`)
+        //         }
+        //     }
+
+        //     xhr.send();
+        // }
     </script>
 </head>
 <body>
@@ -104,24 +238,19 @@
         <input type="date" id="date_from"/>
         <label>По: </label>
         <input type="date" id="date_to" />
- 
-        <label>Результат не больше: </label>
-        <input type="number" id="z_max" />
-        <label>результат не меньше: </label>
-        <input type="number" id="z_min"/>
-           
+
         <button onclick="loadData()">Применить</button>
-        <button onclick="resetFilter()">Сбросить</button>        
+        <button onclick="resetFilter()">Сбросить</button>
     </div>
     
     <table>
         <thead>
             <tr>
-                <th>Время</th>
-                <th>x</th>
-                <th>y</th>
-                <th>Операция</th>
-                <th>Результат</th>
+                <th id="header_operation_date" onclick="sortBy('operation_date')">Время</th>
+                <th id="header_x" onclick="sortBy('x')">x</th>
+                <th id="header_y" onclick="sortBy('y')">y</th>
+                <th id="header_operation" onclick="sortBy('operation')">Операция</th>
+                <th id="header_z" onclick="sortBy('z')">Результат</th>
             </tr>
         </thead>
         <tbody id="calcs">
@@ -130,5 +259,10 @@
             </tr>
         </tbody>
     </table>
+    <div>
+        <button id="prev" onclick="prevPage()" disabled>Назад</button>
+        <span id="page-info"></span>
+        <button id="next" onclick="nextPage()" disabled>Вперед</button>
+    </div>
 </body>
 </html>
